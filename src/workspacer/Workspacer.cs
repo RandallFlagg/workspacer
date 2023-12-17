@@ -7,9 +7,9 @@ using Application = System.Windows.Forms.Application;
 
 namespace workspacer
 {
-    public class workspacer
+    public class Workspacer
     {
-        private static Logger Logger = Logger.Create();
+        private static readonly Logger Logger = Logger.Create();
         public static bool Enabled { get; set; }
 
         private ConfigContext _context;
@@ -130,7 +130,7 @@ namespace workspacer
             }
         }
 
-        public void DisplayMessage(string message)
+        private static void DisplayMessage(string message)
         {
             MessageBox.Show(message, "workspacer");
         }

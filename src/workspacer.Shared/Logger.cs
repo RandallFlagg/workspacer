@@ -25,12 +25,11 @@ namespace workspacer
                     FlushPreBuffer();
                 }
             }
-            private StringBuilder _preBuffer;
+            private readonly StringBuilder _preBuffer;
 
             public FuncWriterTarget()
             {
                 _preBuffer = new StringBuilder();
-                this.OptimizeBufferReuse = true;
             }
 
             protected override void Write(LogEventInfo logEvent)
@@ -56,7 +55,7 @@ namespace workspacer
         private static FileTarget _file;
         private static FuncWriterTarget _console;
 
-        private ILogger _logger;
+        private readonly ILogger _logger;
 
         public static void Initialize(string path) {
             _config = new LoggingConfiguration();

@@ -13,21 +13,25 @@
 
     public static class FSharpCompiler
     {
-        private static FSharpChecker checker =
+        private static readonly FSharpChecker checker =
             FSharpChecker.Create(
                 FSharpOption<int>.None,
                 FSharpOption<bool>.None,
                 FSharpOption<bool>.None,
-                FSharpOption<LegacyReferenceResolver>.None,
-                FSharpOption<FSharpFunc<Tuple<string, DateTime>, FSharpOption<Tuple<object, IntPtr, int>>>>.None,
+                //FSharpOption<LegacyReferenceResolver>.None,
+                null,
+                FSharpOption<FSharpFunc<Tuple<string, DateTime>,
+                FSharpOption<Tuple<object, IntPtr, int>>>>.None,
                 FSharpOption<bool>.None,
                 FSharpOption<bool>.None,
                 FSharpOption<bool>.None,
                 FSharpOption<bool>.None,
                 FSharpOption<bool>.None,
+                FSharpOption<bool>.None,
+                FSharpOption<DocumentSource>.None,
                 FSharpOption<bool>.None);
 
-        private static Regex requireRegex = new Regex("^#r @\"(.*)\"");
+        private static readonly Regex requireRegex = new Regex("^#r @\"(.*)\"");
 
         public static void CompileScript(string scriptFile, IList<string> references, string dllFile)
         {
@@ -79,7 +83,7 @@
                     .LoadFile(dllFile);
         }
 
-        private static IList<string> FindReferences(string scriptFile)
+        private static List<string> FindReferences(string scriptFile)
         {
             var references = new List<string>();
             foreach (var line in File.ReadAllLines(scriptFile))

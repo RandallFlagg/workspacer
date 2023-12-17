@@ -240,10 +240,10 @@ namespace workspacer
 
         public bool Enabled
         {
-            get => workspacer.Enabled;
+            get => Workspacer.Enabled;
             set
             {
-                workspacer.Enabled = value;
+                Workspacer.Enabled = value;
             }
         }
 

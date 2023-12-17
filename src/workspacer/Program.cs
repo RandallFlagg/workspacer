@@ -14,7 +14,7 @@ namespace workspacer
 
     class Program
     {
-        private static workspacer _app;
+        private static Workspacer _app;
         private static Branch? _branch;
         private static Logger _logger = Logger.Create();
 
@@ -133,7 +133,7 @@ namespace workspacer
 
         private static void Run()
         {
-            _app = new workspacer();
+            _app = new Workspacer();
 
 #if !DEBUG
             System.Threading.Thread.GetDomain().UnhandledException += (s, e) =>
